@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript basics</title>
+</head>
+
+<body>
+    <h1>Javascript basics</h1>
+    <ul>
+        <li>Spring</li>
+        <li>Summer</li>
+        <li>Fall</li>
+        <li>Winter</li>
+    </ul>
+    <script>
+      //POO
+      /*
+      Class
+      Objects
+        attributes
+        methods
+      */
+
+
+      const animal = {
+        name:"Snoopy",
+        noise(){
+          console.log("I'm alive");
+        }
+      }
+
+      const animal2 = {
+        name:"Lola Bunny",
+        noise(){
+          console.log("I'm alive");
+        }
+      }
+
+      console.log(animal);
+      console.log(animal2);
+
+
+      //constructor function
+      /*
+      function Animal(name,gender){
+        //attributes
+        this.name = name;
+        this.gender = gender;
+        //methods
+        this.noise = function(){
+          console.log("I'm alive");
+        }
+        this.gretting = function(){
+        console.log(`Hello, my name is ${this.name}`);
+      }
+      
+      }*/
+
+
+      //To prototype
+      function Animal(name,gender){
+        //attributes
+        this.name = name;
+        this.gender = gender;
+        //methods
+      }
+
+      Animal.prototype.noise = function(){
+        console.log("I'm alive");
+      }
+      
+      Animal.prototype.gretting = function(){
+        console.log(`Hello, my name is ${this.name}`);
+      }
+
+      //prototypical inheritance
+      function Dog(name,gender, size){
+        this.super = Animal;
+        this.super(name, gender);
+        this.size = size;
+      }
+
+      //Dog is inheriting from animal
+      Dog.prototype = new Animal();
+      Dog.prototype.constructor = Dog;
+
+      //overwrite
+      Dog.prototype.gretting = function(){
+        console.log("I'm a dog");
+      }
+
+      Dog.prototype.barking = function(){
+        console.log("Guagugua")
+      }
+
+      const snoopy = new Dog("Snoopy", "Male","M"),
+      lolaBunny = new Animal("Lola Bunny", "Female");
+
+      console.log(snoopy);
+      console.log(lolaBunny);
+
+      snoopy.noise();
+      snoopy.gretting();
+      snoopy.barking();
+
+      lolaBunny.noise();
+      lolaBunny.gretting();
+    </script>
+</body>
+
+</html>
